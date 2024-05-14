@@ -1,0 +1,2 @@
+PGUSER=ativooperante_owner
+PGPASSWORD=xFcWPrvnl0C2

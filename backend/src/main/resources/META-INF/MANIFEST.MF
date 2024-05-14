@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Main-Class: br.unoeste.fipp.ativooperante2024.AtivoOperante2024Applicati
+ on
+
