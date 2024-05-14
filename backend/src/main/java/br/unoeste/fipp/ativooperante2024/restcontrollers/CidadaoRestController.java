@@ -19,6 +19,13 @@ public class CidadaoRestController {
     @Autowired
     DenunciaService denunciaService;
 
+    @PostMapping("/add-denuncia")
+    public ResponseEntity<Object> salvarDenuncia (@RequestBody Denuncia denuncia) {
+        Denuncia novo;
+        novo=denunciaService.save(denuncia);
+        return new ResponseEntity<>(novo, HttpStatus.OK);
+    }
+
     @GetMapping("/get-denuncia")
     public ResponseEntity<Object> buscarUmaDenuncia(@RequestParam(value="id") Long id) {
         Denuncia denuncia;
@@ -65,22 +72,5 @@ public class CidadaoRestController {
     @GetMapping("/get-all-tipos")
     public ResponseEntity<Object> buscarTodosTipos() {
         return new ResponseEntity<>(tipoService.getAll(),HttpStatus.OK);
-    }
-
-    @Autowired
-    UsuarioService usuarioService;
-
-    @GetMapping("/get-usuario")
-    public ResponseEntity<Object> buscarUmUsuario(@RequestParam(value="id") Long id) {
-        Usuario usuario;
-        usuario=usuarioService.getById(id);
-        if(usuario==null)
-            usuario=new Usuario();
-        return new ResponseEntity<>(usuario,HttpStatus.OK);
-    }
-
-    @GetMapping("/get-all-usuarios")
-    public ResponseEntity<Object> buscarTodosUsuarios() {
-        return new ResponseEntity<>(usuarioService.getAll(),HttpStatus.OK);
     }
 }
