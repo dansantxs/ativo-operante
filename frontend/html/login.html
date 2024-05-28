@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <title>Formulário de Login</title>
     <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <script src="/js/login.js" defer></script>
   </head>
   <body>
     <div class="container">
       <div class="content">
         <div id="login">
-          <form method="post" action=""> 
+          <form id="login-form"> 
             <h1>Login</h1> 
             
             <p> 
@@ -21,11 +22,6 @@
             <p> 
               <label for="senha_login">Sua senha</label>
               <input id="senha_login" name="senha_login" required="required" type="password" placeholder="Sua senha" /> 
-            </p>
-            
-            <p> 
-              <input type="checkbox" name="manterlogado" id="manterlogado" value="" /> 
-              <label for="manterlogado">Manter-me logado</label>
             </p>
             
             <div class="button-container">

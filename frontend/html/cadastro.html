@@ -5,19 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <title>Formulário de Cadastro</title>
     <link rel="stylesheet" type="text/css" href="/css/style.css">
-    <script src="/frontend/js/script.js"></script>
+    <script src="/js/cadastro.js" defer></script>
   </head>
   <body>
     <div class="container">
       <div class="content">
         <div id="cadastro">
-          <form method="post" action="" onsubmit="return validarFormulario()">
+          <form id="cadastro-form" method="post" action="">
             <h1>Cadastro</h1> 
-
-            <p> 
-              <label for="nome_cad">Seu nome</label>
-              <input id="nome_cad" name="nome_cad" required="required" type="text" placeholder="Ex: Maria da Silva" />
-            </p>
 
             <p> 
               <label for="cpf_cad">Seu CPF</label>
@@ -31,7 +26,7 @@
 
             <p> 
               <label for="senha_cad">Sua senha</label>
-              <input id="senha_cad" name="senha_cad" required="required" type="password" placeholder="Ex: Mínimo 6 caracteres"/>
+              <input id="senha_cad" name="senha_cad" required="required" type="password" oninput="apenasNumeros(this)" onkeydown="return apenasNumerosTecla(event)" maxlength="6" placeholder="Ex: Máximo 6 caracteres"/>
             </p>
 
             <p> 

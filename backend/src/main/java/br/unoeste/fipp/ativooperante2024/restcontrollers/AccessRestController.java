@@ -4,6 +4,7 @@ import br.unoeste.fipp.ativooperante2024.db.entities.Usuario;
 import br.unoeste.fipp.ativooperante2024.security.JWTTokenProvider;
 import br.unoeste.fipp.ativooperante2024.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,8 +33,19 @@ public class AccessRestController {
         }
     }
 
-    @GetMapping("/get-user")
-    public ResponseEntity<Object> getUser(@RequestParam(value="usu_id") Long usu_id) {
-        return ResponseEntity.ok(usuarioService.getById(usu_id));
+    @PostMapping("/add-usuario")
+    public ResponseEntity<Object> salvarUsuario(@RequestBody Usuario usuario) {
+        if (!Usuario.isValidCpf(usuario.getCpf())) {
+            return ResponseEntity.badRequest().body("CPF inválido");
+        }
+        if (!Usuario.isValidEmail(usuario.getEmail())) {
+            return ResponseEntity.badRequest().body("E-mail inválido");
+        }
+        if (!Usuario.isValidSenha(usuario.getSenha())) {
+            return ResponseEntity.badRequest().body("Senha inválida");
+        }
+
+        Usuario novo = usuarioService.save(usuario);
+        return new ResponseEntity<>(novo, HttpStatus.OK);
     }
 }
