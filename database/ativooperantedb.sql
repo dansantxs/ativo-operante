@@ -21,7 +21,7 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- Name: denuncia; Type: TABLE; Schema: public; Owner: ativooperante_owner
+-- Name: denuncia; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.denuncia (
@@ -36,10 +36,10 @@ CREATE TABLE public.denuncia (
 );
 
 
-ALTER TABLE public.denuncia OWNER TO ativooperante_owner;
+ALTER TABLE public.denuncia OWNER TO postgres;
 
 --
--- Name: denuncia_den_id_seq; Type: SEQUENCE; Schema: public; Owner: ativooperante_owner
+-- Name: denuncia_den_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.denuncia_den_id_seq
@@ -51,17 +51,17 @@ CREATE SEQUENCE public.denuncia_den_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.denuncia_den_id_seq OWNER TO ativooperante_owner;
+ALTER TABLE public.denuncia_den_id_seq OWNER TO postgres;
 
 --
--- Name: denuncia_den_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ativooperante_owner
+-- Name: denuncia_den_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.denuncia_den_id_seq OWNED BY public.denuncia.den_id;
 
 
 --
--- Name: feedback; Type: TABLE; Schema: public; Owner: ativooperante_owner
+-- Name: feedback; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.feedback (
@@ -71,10 +71,10 @@ CREATE TABLE public.feedback (
 );
 
 
-ALTER TABLE public.feedback OWNER TO ativooperante_owner;
+ALTER TABLE public.feedback OWNER TO postgres;
 
 --
--- Name: feedback_fee_id_seq; Type: SEQUENCE; Schema: public; Owner: ativooperante_owner
+-- Name: feedback_fee_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.feedback_fee_id_seq
@@ -86,17 +86,17 @@ CREATE SEQUENCE public.feedback_fee_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.feedback_fee_id_seq OWNER TO ativooperante_owner;
+ALTER TABLE public.feedback_fee_id_seq OWNER TO postgres;
 
 --
--- Name: feedback_fee_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ativooperante_owner
+-- Name: feedback_fee_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.feedback_fee_id_seq OWNED BY public.feedback.fee_id;
 
 
 --
--- Name: orgaos; Type: TABLE; Schema: public; Owner: ativooperante_owner
+-- Name: orgaos; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.orgaos (
@@ -105,10 +105,10 @@ CREATE TABLE public.orgaos (
 );
 
 
-ALTER TABLE public.orgaos OWNER TO ativooperante_owner;
+ALTER TABLE public.orgaos OWNER TO postgres;
 
 --
--- Name: orgaos_org_id_seq; Type: SEQUENCE; Schema: public; Owner: ativooperante_owner
+-- Name: orgaos_org_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.orgaos_org_id_seq
@@ -120,17 +120,17 @@ CREATE SEQUENCE public.orgaos_org_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.orgaos_org_id_seq OWNER TO ativooperante_owner;
+ALTER TABLE public.orgaos_org_id_seq OWNER TO postgres;
 
 --
--- Name: orgaos_org_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ativooperante_owner
+-- Name: orgaos_org_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.orgaos_org_id_seq OWNED BY public.orgaos.org_id;
 
 
 --
--- Name: tipo; Type: TABLE; Schema: public; Owner: ativooperante_owner
+-- Name: tipo; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.tipo (
@@ -139,10 +139,10 @@ CREATE TABLE public.tipo (
 );
 
 
-ALTER TABLE public.tipo OWNER TO ativooperante_owner;
+ALTER TABLE public.tipo OWNER TO postgres;
 
 --
--- Name: tipo_tip_id_seq; Type: SEQUENCE; Schema: public; Owner: ativooperante_owner
+-- Name: tipo_tip_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.tipo_tip_id_seq
@@ -154,17 +154,17 @@ CREATE SEQUENCE public.tipo_tip_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.tipo_tip_id_seq OWNER TO ativooperante_owner;
+ALTER TABLE public.tipo_tip_id_seq OWNER TO postgres;
 
 --
--- Name: tipo_tip_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ativooperante_owner
+-- Name: tipo_tip_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.tipo_tip_id_seq OWNED BY public.tipo.tip_id;
 
 
 --
--- Name: usuario; Type: TABLE; Schema: public; Owner: ativooperante_owner
+-- Name: usuario; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.usuario (
@@ -176,10 +176,10 @@ CREATE TABLE public.usuario (
 );
 
 
-ALTER TABLE public.usuario OWNER TO ativooperante_owner;
+ALTER TABLE public.usuario OWNER TO postgres;
 
 --
--- Name: usuario_usu_id_seq; Type: SEQUENCE; Schema: public; Owner: ativooperante_owner
+-- Name: usuario_usu_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.usuario_usu_id_seq
@@ -191,65 +191,65 @@ CREATE SEQUENCE public.usuario_usu_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.usuario_usu_id_seq OWNER TO ativooperante_owner;
+ALTER TABLE public.usuario_usu_id_seq OWNER TO postgres;
 
 --
--- Name: usuario_usu_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ativooperante_owner
+-- Name: usuario_usu_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.usuario_usu_id_seq OWNED BY public.usuario.usu_id;
 
 
 --
--- Name: denuncia den_id; Type: DEFAULT; Schema: public; Owner: ativooperante_owner
+-- Name: denuncia den_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.denuncia ALTER COLUMN den_id SET DEFAULT nextval('public.denuncia_den_id_seq'::regclass);
 
 
 --
--- Name: feedback fee_id; Type: DEFAULT; Schema: public; Owner: ativooperante_owner
+-- Name: feedback fee_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.feedback ALTER COLUMN fee_id SET DEFAULT nextval('public.feedback_fee_id_seq'::regclass);
 
 
 --
--- Name: orgaos org_id; Type: DEFAULT; Schema: public; Owner: ativooperante_owner
+-- Name: orgaos org_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.orgaos ALTER COLUMN org_id SET DEFAULT nextval('public.orgaos_org_id_seq'::regclass);
 
 
 --
--- Name: tipo tip_id; Type: DEFAULT; Schema: public; Owner: ativooperante_owner
+-- Name: tipo tip_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.tipo ALTER COLUMN tip_id SET DEFAULT nextval('public.tipo_tip_id_seq'::regclass);
 
 
 --
--- Name: usuario usu_id; Type: DEFAULT; Schema: public; Owner: ativooperante_owner
+-- Name: usuario usu_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.usuario ALTER COLUMN usu_id SET DEFAULT nextval('public.usuario_usu_id_seq'::regclass);
 
 
 --
--- Data for Name: denuncia; Type: TABLE DATA; Schema: public; Owner: ativooperante_owner
+-- Data for Name: denuncia; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 INSERT INTO public.denuncia VALUES (1, 'semaforo quebrado', 'semaforo da av da saudede perto do campua I da Unoeste não está funcionando', 4, 4, '2023-05-12 00:00:00', 1, 2);
 
 
 --
--- Data for Name: feedback; Type: TABLE DATA; Schema: public; Owner: ativooperante_owner
+-- Data for Name: feedback; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 
 
 --
--- Data for Name: orgaos; Type: TABLE DATA; Schema: public; Owner: ativooperante_owner
+-- Data for Name: orgaos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 INSERT INTO public.orgaos VALUES (1, 'SEDUC');
@@ -259,7 +259,7 @@ INSERT INTO public.orgaos VALUES (4, 'SETRAN');
 
 
 --
--- Data for Name: tipo; Type: TABLE DATA; Schema: public; Owner: ativooperante_owner
+-- Data for Name: tipo; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 INSERT INTO public.tipo VALUES (1, 'trânsito');
@@ -269,7 +269,7 @@ INSERT INTO public.tipo VALUES (4, 'segurança');
 
 
 --
--- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: ativooperante_owner
+-- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 INSERT INTO public.usuario VALUES (1, 12111158963, 'admin@pm.br', 123321, 1);
@@ -277,42 +277,42 @@ INSERT INTO public.usuario VALUES (2, 5488889915, 'ze@cidadao.com.br', 123, 2);
 
 
 --
--- Name: denuncia_den_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ativooperante_owner
+-- Name: denuncia_den_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.denuncia_den_id_seq', 1, true);
 
 
 --
--- Name: feedback_fee_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ativooperante_owner
+-- Name: feedback_fee_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.feedback_fee_id_seq', 1, false);
 
 
 --
--- Name: orgaos_org_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ativooperante_owner
+-- Name: orgaos_org_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.orgaos_org_id_seq', 4, true);
 
 
 --
--- Name: tipo_tip_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ativooperante_owner
+-- Name: tipo_tip_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.tipo_tip_id_seq', 4, true);
 
 
 --
--- Name: usuario_usu_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ativooperante_owner
+-- Name: usuario_usu_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.usuario_usu_id_seq', 2, true);
 
 
 --
--- Name: denuncia denuncia_pkey; Type: CONSTRAINT; Schema: public; Owner: ativooperante_owner
+-- Name: denuncia denuncia_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.denuncia
@@ -320,7 +320,7 @@ ALTER TABLE ONLY public.denuncia
 
 
 --
--- Name: feedback feedback_pkey; Type: CONSTRAINT; Schema: public; Owner: ativooperante_owner
+-- Name: feedback feedback_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.feedback
@@ -328,7 +328,7 @@ ALTER TABLE ONLY public.feedback
 
 
 --
--- Name: orgaos orgaos_pkey; Type: CONSTRAINT; Schema: public; Owner: ativooperante_owner
+-- Name: orgaos orgaos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.orgaos
@@ -336,7 +336,7 @@ ALTER TABLE ONLY public.orgaos
 
 
 --
--- Name: tipo tipo_pkey; Type: CONSTRAINT; Schema: public; Owner: ativooperante_owner
+-- Name: tipo tipo_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.tipo
@@ -344,7 +344,7 @@ ALTER TABLE ONLY public.tipo
 
 
 --
--- Name: usuario usuario_pkey; Type: CONSTRAINT; Schema: public; Owner: ativooperante_owner
+-- Name: usuario usuario_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.usuario
@@ -352,7 +352,7 @@ ALTER TABLE ONLY public.usuario
 
 
 --
--- Name: denuncia denuncia_org_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: ativooperante_owner
+-- Name: denuncia denuncia_org_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.denuncia
@@ -360,7 +360,7 @@ ALTER TABLE ONLY public.denuncia
 
 
 --
--- Name: denuncia denuncia_tip_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: ativooperante_owner
+-- Name: denuncia denuncia_tip_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.denuncia
@@ -368,7 +368,7 @@ ALTER TABLE ONLY public.denuncia
 
 
 --
--- Name: denuncia denuncia_usu_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: ativooperante_owner
+-- Name: denuncia denuncia_usu_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.denuncia
@@ -376,7 +376,7 @@ ALTER TABLE ONLY public.denuncia
 
 
 --
--- Name: feedback feedback_den_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: ativooperante_owner
+-- Name: feedback feedback_den_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.feedback

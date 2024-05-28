@@ -1,50 +1,45 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-  <title>Formulário de Cadastro</title>
-  <link rel="stylesheet" type="text/css" href="/css/style.css">
-  <script src="/js/script.js"></script>
-</head>
-<body>
-  <div class="container">
-    <div class="content">
-      <div id="cadastro">
-        <form method="post" action="" onsubmit="return validarFormulario()">
-          <h1>Cadastro</h1> 
-           
-          <p> 
-            <label for="nome_cad">Seu nome</label>
-            <input id="nome_cad" name="nome_cad" required="required" type="text" placeholder="Ex: Maria da Silva" />
-          </p>
-          
-          <p> 
-            <label for="cpf_cad">Seu CPF</label>
-            <input id="cpf_cad" name="cpf_cad" required="required" type="text" maxlength="14" oninput="formatarCPF(this)" placeholder="Ex: 123.456.789-00" /> 
-          </p>
-           
-          <p> 
-            <label for="email_cad">Seu e-mail</label>
-            <input id="email_cad" name="email_cad" required="required" type="email" placeholder="Ex: exemplo@dominio.com"/> 
-          </p>
-           
-          <p> 
-            <label for="senha_cad">Sua senha</label>
-            <input id="senha_cad" name="senha_cad" required="required" type="password" placeholder="Ex: Mínimo 6 caracteres"/>
-          </p>
-           
-          <p> 
-            <input type="submit" value="Cadastrar"/> 
-          </p>
-           
-          <p class="link">  
-            Já tem conta?
-            <a href="login.html">Ir para Login</a>
-          </p>
-        </form>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Formulário de Cadastro</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <script src="/js/cadastro.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="content">
+        <div id="cadastro">
+          <form id="cadastro-form" method="post" action="">
+            <h1>Cadastro</h1> 
+
+            <p> 
+              <label for="cpf_cad">Seu CPF</label>
+              <input id="cpf_cad" name="cpf_cad" required="required" type="text" maxlength="14" oninput="formatarCPF(this)" placeholder="Ex: 123.456.789-00" /> 
+            </p>
+
+            <p> 
+              <label for="email_cad">Seu e-mail</label>
+              <input id="email_cad" name="email_cad" required="required" type="email" placeholder="Ex: exemplo@dominio.com"/> 
+            </p>
+
+            <p> 
+              <label for="senha_cad">Sua senha</label>
+              <input id="senha_cad" name="senha_cad" required="required" type="password" oninput="apenasNumeros(this)" onkeydown="return apenasNumerosTecla(event)" maxlength="6" placeholder="Ex: Máximo 6 caracteres"/>
+            </p>
+
+            <p> 
+              <input type="submit" value="Cadastrar"/> 
+            </p>
+
+            <p class="link">  
+              Já tem conta?
+              <a href="login.html">Ir para Login</a>
+            </p>
+          </form>
+        </div>
       </div>
-    </div>
-  </div>  
-</body>
+    </div>  
+  </body>
 </html>

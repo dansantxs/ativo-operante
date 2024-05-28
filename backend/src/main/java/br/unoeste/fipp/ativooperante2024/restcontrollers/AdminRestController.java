@@ -115,13 +115,6 @@ public class AdminRestController {
     @Autowired
     UsuarioService usuarioService;
 
-    @PostMapping("/add-usuario")
-    public ResponseEntity<Object> salvarUsuario (@RequestBody Usuario usuario) {
-        Usuario novo;
-        novo=usuarioService.save(usuario);
-        return new ResponseEntity<>(novo, HttpStatus.OK);
-    }
-
     @GetMapping("/delete-usuario")
     public ResponseEntity<Object> excluirUsuario(@RequestParam(value="id") Long id) {
         if(usuarioService.delete(id))

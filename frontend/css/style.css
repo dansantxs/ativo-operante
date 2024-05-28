@@ -67,7 +67,9 @@ input {
     outline: none;
 }
 
-input:not([type="checkbox"]){
+input:not([type="checkbox"]),
+textarea,
+select {
     width: 95%;
     margin-top: 4px;
     padding: 10px;    
@@ -81,6 +83,10 @@ input:not([type="checkbox"]){
 
     -webkit-transition: all 0.2s linear;
     transition: all 0.2s linear;
+}
+
+select {
+    width: 100%;
 }
 
 input[type="submit"]{
