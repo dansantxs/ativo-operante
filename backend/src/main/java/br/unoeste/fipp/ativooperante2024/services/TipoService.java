@@ -19,16 +19,14 @@ public class TipoService {
     public boolean delete(Long id) {
         try {
             repo.deleteById(id);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             return false;
         }
         return true;
     }
 
     public Tipo getById(Long id) {
-        Tipo tipo=repo.findById(id).get();
-        return tipo;
+        return repo.findById(id).orElse(null);
     }
 
     public List<Tipo> getAll() {

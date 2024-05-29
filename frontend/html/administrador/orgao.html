@@ -3,38 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerenciar Tipos de Problema</title>
+    <title>Gerenciar Órgãos Competentes</title>
     <link rel="stylesheet" type="text/css" href="/css/style.css">
-    <script src="/js/administrador/tipo.js" defer></script>
+    <script src="/js/administrador/orgao.js" defer></script>
 </head>
 <body>
     <div class="container">
         <div class="content">
-            <h1>Gerenciar Tipos de Problema</h1>
+            <h1>Gerenciar Órgãos Competentes</h1>
             <div class="search-bar">
-                <input type="text" id="search-input" placeholder="Buscar por ID ou Descrição" oninput="filterGrid()">
+                <input type="text" id="search-input" placeholder="Buscar por ID ou Nome" oninput="filterGrid()">
             </div>
             <div class="grid">
-                <table id="tipos-table">
+                <table id="orgaos-table">
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Descrição</th>
+                            <th>Nome</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Linhas de tipos de problema serão inseridas aqui via JavaScript -->
+                        <!-- Linhas de órgãos competentes serão inseridas aqui via JavaScript -->
                     </tbody>
                 </table>
             </div>
             <div class="form-container">
-                <h2 id="form-title">Adicionar Tipo de Problema</h2>
-                <form id="tipo-form">
-                    <input type="hidden" id="tipo-id">
+                <h2 id="form-title">Adicionar Órgão Competente</h2>
+                <form id="orgao-form">
+                    <input type="hidden" id="orgao-id">
                     <p>
-                        <label for="nome">Descrição</label>
-                        <input type="text" id="nome" required="required" placeholder="Descrição do Tipo de Problema">
+                        <label for="nome">Nome</label>
+                        <input type="text" id="nome" required="required" placeholder="Nome do Órgão Competente">
                     </p>
                     <p>
                         <input type="submit" value="Salvar">

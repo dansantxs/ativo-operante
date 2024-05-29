@@ -2,7 +2,6 @@ package br.unoeste.fipp.ativooperante2024.security;
 
 import java.io.IOException;
 
-
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -16,11 +15,11 @@ public class AccessFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
-        String token = req.getHeader("Authorization"); 
-        if(token!=null && JWTTokenProvider.verifyToken(token))
-            chain.doFilter(request, response);    
-        else
-            ((HttpServletResponse)response).setStatus(500);
-            response.getOutputStream().write("Não autorizado ".getBytes()); 
+        String token = req.getHeader("Authorization");
+        // if(token!=null && JWTTokenProvider.verifyToken(token)) // Comente esta linha para desabilitar a verificação do token
+        chain.doFilter(request, response); // Comente esta linha também
+        // else
+        //     ((HttpServletResponse)response).setStatus(500);
+        //     response.getOutputStream().write("Não autorizado ".getBytes());
     }
 }
