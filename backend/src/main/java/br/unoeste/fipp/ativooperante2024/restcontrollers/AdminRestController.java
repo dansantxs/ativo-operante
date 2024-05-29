@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("apis/adm/")
 public class AdminRestController {
@@ -40,8 +42,11 @@ public class AdminRestController {
 
     @PostMapping("/add-feedback")
     public ResponseEntity<Object> salvarFeedback (@RequestBody Feedback feedback) {
-        Feedback novo;
-        novo=feedbackService.save(feedback);
+        if (feedback.getDenuncia() != null && feedback.getDenuncia().getId() != null) {
+            Denuncia denuncia = denunciaService.getById(feedback.getDenuncia().getId());
+            feedback.setDenuncia(denuncia);
+        }
+        Feedback novo = feedbackService.save(feedback);
         return new ResponseEntity<>(novo, HttpStatus.OK);
     }
 
@@ -64,7 +69,12 @@ public class AdminRestController {
 
     @GetMapping("/get-all-feedbacks")
     public ResponseEntity<Object> buscarTodosFeedbacks() {
-        return new ResponseEntity<>(feedbackService.getAll(),HttpStatus.OK);
+        try {
+            List<Feedback> feedbacks = feedbackService.getAll();
+            return new ResponseEntity<>(feedbacks, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @Autowired

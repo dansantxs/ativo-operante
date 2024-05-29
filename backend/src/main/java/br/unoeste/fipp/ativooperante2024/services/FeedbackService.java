@@ -19,16 +19,14 @@ public class FeedbackService {
     public boolean delete(Long id) {
         try {
             repo.deleteById(id);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             return false;
         }
         return true;
     }
 
     public Feedback getById(Long id) {
-        Feedback feedback=repo.findById(id).get();
-        return feedback;
+        return repo.findById(id).orElse(null);
     }
 
     public List<Feedback> getAll() {
