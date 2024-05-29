@@ -32,4 +32,6 @@ public class TipoService {
     public List<Tipo> getAll() {
         return repo.findAll();
     }
+
+
 }

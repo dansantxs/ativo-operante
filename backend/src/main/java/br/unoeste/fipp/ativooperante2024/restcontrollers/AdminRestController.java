@@ -7,7 +7,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
+@CrossOrigin("http://127.0.0.1:5500")
 @RequestMapping("apis/adm/")
 public class AdminRestController {
     @Autowired
@@ -105,10 +108,23 @@ public class AdminRestController {
     @Autowired
     OrgaoService orgaoService;
 
+
+    @PostMapping("/add-usuario")
+    public ResponseEntity<Object> salvarUsuario (@RequestBody Usuario usuario) {
+        if (!usuario.isValidEmail(usuario.getEmail())) {
+            return ResponseEntity.badRequest().body("Email inválido");
+        }
+        try {
+            return new ResponseEntity<>(usuarioService.save(usuario), HttpStatus.OK);
+        } catch (IllegalArgumentException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+
     @PostMapping("/add-orgao")
     public ResponseEntity<Object> salvarOrgao(@RequestBody Orgao orgao) {
         Orgao novo = orgaoService.save(orgao);
         return new ResponseEntity<>(novo, HttpStatus.OK);
+
     }
 
     @PutMapping("/update-orgao")

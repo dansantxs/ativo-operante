@@ -13,6 +13,9 @@ public class UsuarioService {
     private UsuarioRepository repo;
 
     public Usuario save(Usuario usuario) {
+        if (repo.existsByEmail(usuario.getEmail())) {
+            throw new IllegalArgumentException("Login já existente");
+        }
         return repo.save(usuario);
     }
 
@@ -37,4 +40,12 @@ public class UsuarioService {
     public List<Usuario> getAll() {
         return repo.findAll();
     }
+
+    public Usuario getByEmail(String email) {
+        return repo.findByEmail(email);
+    }
+
+
+
+
 }

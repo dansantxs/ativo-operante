@@ -76,6 +76,8 @@ public class Usuario {
         this.nivel = nivel;
     }
 
+
+=======
     public static boolean isValidCpf(Long cpf) {
         String cpfString = cpf.toString();
         if (cpfString.length() != 11) {
@@ -110,8 +112,11 @@ public class Usuario {
         return pattern.matcher(email).matches();
     }
 
+}
+=======
     public static boolean isValidSenha(Long senha) {
         String senhaString = senha.toString();
         return !senhaString.isEmpty() && senhaString.length() <= 6;
     }
 }
+

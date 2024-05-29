@@ -1,3 +1,4 @@
+
 package br.unoeste.fipp.ativooperante2024.restcontrollers;
 
 import br.unoeste.fipp.ativooperante2024.db.entities.Usuario;
@@ -49,3 +50,4 @@ public class AccessRestController {
         return new ResponseEntity<>(novo, HttpStatus.OK);
     }
 }
+

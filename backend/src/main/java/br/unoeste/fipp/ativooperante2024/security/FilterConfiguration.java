@@ -1,5 +1,5 @@
 package br.unoeste.fipp.ativooperante2024.security;
-
+/*
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,3 +18,5 @@ public class FilterConfiguration {
         return register;
     }
 }
+
+ */

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Denúncia</title>
+    <link rel="stylesheet" href="/css/denuncia.css">
+    <script src="/js/cadastrarDenuncia.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Cadastro de Denúncia</h2>
+        <form id="formDenuncia" onsubmit="return cadastrarDenuncia(event)">
+            <div class="form-group">
+                <input type="text" id="den_titulo" name="den_titulo" placeholder="Título da Denúncia" required>
+                <textarea id="den_texto" name="den_texto" placeholder="Texto da Denúncia" required></textarea>
+                <input type="number" id="den_urgencia" name="den_urgencia" placeholder="Nível de Urgência" required>
+                <input type="date" id="den_data" name="den_data" placeholder="Data" required>
+                <input type="number" id="org_id" name="org_id" placeholder="ID do Órgão" required>
+                <input type="number" id="tip_id" name="tip_id" placeholder="ID do Tipo" required>
+                <input type="number" id="usu_id" name="usu_id" placeholder="ID do Usuário" required>
+            </div>
+            <button type="submit">Gravar</button>
+        </form>
+        <button onclick="window.location.href = 'exibirDenuncia.html';">Ver denúncias cadastradas</button>
+        <button onclick="window.location.href = 'listaTipos.html';">Ver lista de tipos</button>
+        <button onclick="window.location.href = 'listaOrgao.html';">Ver lista de tipos</button>
+    </div>
+</body>
+</html>
