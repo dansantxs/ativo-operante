@@ -9,15 +9,18 @@ public class Feedback {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="fee_id")
     private Long id;
+
     @Column(name="fee_texto")
     private String texto;
+
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="den_id")
+    @JoinColumn(name="den_id", referencedColumnName = "den_id")
     private Denuncia denuncia;
 
     public Feedback() {
-        this(0L,"");
+        this(0L, "");
     }
+
     public Feedback(Long id, String texto) {
         this.id = id;
         this.texto = texto;
@@ -37,5 +40,13 @@ public class Feedback {
 
     public void setTexto(String texto) {
         this.texto = texto;
+    }
+
+    public Denuncia getDenuncia() {
+        return denuncia;
+    }
+
+    public void setDenuncia(Denuncia denuncia) {
+        this.denuncia = denuncia;
     }
 }
