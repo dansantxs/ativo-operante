@@ -34,4 +34,7 @@ public class DenunciaService {
     public List<Denuncia> getAll() {
         return repo.findAll();
     }
+    public List<Denuncia> getDenunciasDoUsuario(Long usuarioId) {
+        return repo.findByUsuarioId(usuarioId);
+    }
 }

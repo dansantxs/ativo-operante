@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Denúncias do Usuário</title>
+    <link rel="stylesheet" href="/css/denuncia.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Denúncias do Usuário</h1>
+
+        <label for="usuarioId">ID do Usuário:</label>
+        <input type="number" id="usuarioId" name="usuarioId" required>
+        <button id="buscarDenunciasBtn">Buscar Denúncias</button>
+
+        <div id="denuncias-container" class="denuncias-container">
+            <!-- As denúncias serão exibidas aqui -->
+        </div>
+        <button onclick="window.location.href = 'cadastrarDenuncia.html';">Cadastradar denuncias</button>
+    </div>
+
+    <script src="/js/exibirDenuncia.js" defer></script>
+</body>
+</html>

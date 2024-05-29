@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface DenunciaRepository extends JpaRepository<Denuncia,Long> {
-    public List<Denuncia> findAllByUsuario(Usuario usuario);
+
+    public List<Denuncia> findByUsuarioId(Long usuarioId);
 }
 

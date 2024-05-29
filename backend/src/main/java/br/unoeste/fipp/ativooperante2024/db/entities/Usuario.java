@@ -2,6 +2,8 @@ package br.unoeste.fipp.ativooperante2024.db.entities;
 
 import jakarta.persistence.*;
 
+import java.util.regex.Pattern;
+
 @Entity
 @Table(name="usuario")
 public class Usuario {
@@ -69,4 +71,12 @@ public class Usuario {
     public void setNivel(int nivel) {
         this.nivel = nivel;
     }
+
+    public static boolean isValidEmail(String email) {
+        String emailRegex = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
+        Pattern pattern = Pattern.compile(emailRegex);
+        return pattern.matcher(email).matches();
+    }
+
+
 }

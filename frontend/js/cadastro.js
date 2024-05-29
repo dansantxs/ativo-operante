@@ -1,3 +1,10 @@
+
+
+
+
+
+
+
 function validarFormulario() {
     var cpfInput = document.getElementById('cpf_cad');
     var cpf = cpfInput.value;
