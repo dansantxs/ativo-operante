@@ -1,36 +1,47 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-        <title>Cadastro de Orgãos Públicos</title>
-        <link rel="stylesheet" type="text/css" href="/frontend/css/style.css">
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                <div id="denuncia">
-                    <form method="post" action=""> 
-                        <h1>Orgãos Públicos</h1> 
-
-                        <p> 
-                            <label for="titulo">Título do Orgão Público</label>
-                            <input id="titulo" name="titulo" required="required" type="text" placeholder="Informe o título do orgão público" /> 
-                        </p>
-
-                        <p> 
-                            <input type="submit" value="Cadastrar" /> 
-                        </p>
-                    </form>
-                </div>
-
-                <div class="denuncias-list">
-                    <h2>Tipos de Orgãos Públicos</h2>
-                    <ul>
-
-                    </ul>
-                </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar Órgãos Competentes</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <script src="/js/administrador/orgao.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <h1>Gerenciar Órgãos Competentes</h1>
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Buscar por ID ou Nome" oninput="filterGrid()">
             </div>
-        </div>  
-    </body>
+            <div class="grid">
+                <table id="orgaos-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Linhas de órgãos competentes serão inseridas aqui via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="form-container">
+                <h2 id="form-title">Adicionar Órgão Competente</h2>
+                <form id="orgao-form">
+                    <input type="hidden" id="orgao-id">
+                    <p>
+                        <label for="nome">Nome</label>
+                        <input type="text" id="nome" required="required" placeholder="Nome do Órgão Competente">
+                    </p>
+                    <p>
+                        <input type="submit" value="Salvar">
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
 </html>

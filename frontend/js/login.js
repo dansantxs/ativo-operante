@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
     form.addEventListener('submit', async function (event) {
         event.preventDefault();
 
-        const email = document.getElementById('email_login').value;
-        const senha = document.getElementById('senha_login').value;
+        const email = document.getElementById('email_cad').value;
+        const senha = document.getElementById('senha_cad').value;
 
         const usuario = {
             email: email,
@@ -21,18 +21,27 @@ document.addEventListener('DOMContentLoaded', function () {
                 body: JSON.stringify(usuario)
             });
 
+            const token = await response.text();
+
             if (!response.ok) {
-                const errorMessage = await response.text();
-                alert('Erro: ' + errorMessage);
+                alert('Erro: ' + token);
                 return;
             }
 
-            const token = await response.text();
-            localStorage.setItem('jwtToken', token);
+            const payload = JSON.parse(atob(token.split('.')[1]));
+            const nivel = parseInt(payload.nivel);
 
-            alert('Login bem-sucedido!');
+            // Armazenar o token no localStorage
+            localStorage.setItem('token', token);
 
-            window.location.href = '/home.html';
+            if (nivel === 1) {
+                window.location.href = 'home-administrador.html';
+            } else if (nivel === 2) {
+                window.location.href = 'home-cidadao.html';
+            } else {
+                alert('Nível de usuário desconhecido.');
+            }
+
         } catch (error) {
             console.error('Erro ao fazer login:', error);
             alert('Erro ao fazer login: ' + error.message);

@@ -1,13 +1,7 @@
 package br.unoeste.fipp.ativooperante2024.restcontrollers;
 
-import br.unoeste.fipp.ativooperante2024.db.entities.Denuncia;
-import br.unoeste.fipp.ativooperante2024.services.DenunciaService;
-import br.unoeste.fipp.ativooperante2024.db.entities.Orgao;
-import br.unoeste.fipp.ativooperante2024.services.OrgaoService;
-import br.unoeste.fipp.ativooperante2024.db.entities.Tipo;
-import br.unoeste.fipp.ativooperante2024.services.TipoService;
-import br.unoeste.fipp.ativooperante2024.db.entities.Usuario;
-import br.unoeste.fipp.ativooperante2024.services.UsuarioService;
+import br.unoeste.fipp.ativooperante2024.db.entities.*;
+import br.unoeste.fipp.ativooperante2024.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,13 +12,6 @@ import org.springframework.web.bind.annotation.*;
 public class AdminRestController {
     @Autowired
     DenunciaService denunciaService;
-
-    @PostMapping("/add-denuncia")
-    public ResponseEntity<Object> salvarDenuncia (@RequestBody Denuncia denuncia) {
-        Denuncia novo;
-        novo=denunciaService.save(denuncia);
-        return new ResponseEntity<>(novo, HttpStatus.OK);
-    }
 
     @GetMapping("/delete-denuncia")
     public ResponseEntity<Object> excluirDenuncia(@RequestParam(value="id") Long id) {
@@ -49,91 +36,104 @@ public class AdminRestController {
     }
 
     @Autowired
-    OrgaoService orgaoService;
+    FeedbackService feedbackService;
 
-    @PostMapping("/add-orgao")
-    public ResponseEntity<Object> salvarOrgao (@RequestBody Orgao orgao) {
-        Orgao novo;
-        novo=orgaoService.save(orgao);
+    @PostMapping("/add-feedback")
+    public ResponseEntity<Object> salvarFeedback (@RequestBody Feedback feedback) {
+        Feedback novo;
+        novo=feedbackService.save(feedback);
         return new ResponseEntity<>(novo, HttpStatus.OK);
     }
 
-    @GetMapping("/delete-orgao")
-    public ResponseEntity<Object> excluirOrgao(@RequestParam(value="id") Long id) {
-        if(orgaoService.delete(id))
+    @GetMapping("/delete-feedback")
+    public ResponseEntity<Object> excluirFeedback(@RequestParam(value="id") Long id) {
+        if(feedbackService.delete(id))
             return new ResponseEntity<>("",HttpStatus.OK);
         else
             return new ResponseEntity<>("",HttpStatus.BAD_REQUEST);
     }
 
-    @GetMapping("/get-orgao")
-    public ResponseEntity<Object> buscarUmOrgao(@RequestParam(value="id") Long id) {
-        Orgao orgao;
-        orgao=orgaoService.getById(id);
-        if(orgao==null)
-            orgao=new Orgao();
-        return new ResponseEntity<>(orgao,HttpStatus.OK);
+    @GetMapping("/get-feedback")
+    public ResponseEntity<Object> buscarUmFeedback(@RequestParam(value="id") Long id) {
+        Feedback feedback;
+        feedback=feedbackService.getById(id);
+        if(feedback==null)
+            feedback=new Feedback();
+        return new ResponseEntity<>(feedback,HttpStatus.OK);
     }
 
-    @GetMapping("/get-all-orgaos")
-    public ResponseEntity<Object> buscarTodosOrgaos() {
-        return new ResponseEntity<>(orgaoService.getAll(),HttpStatus.OK);
+    @GetMapping("/get-all-feedbacks")
+    public ResponseEntity<Object> buscarTodosFeedbacks() {
+        return new ResponseEntity<>(feedbackService.getAll(),HttpStatus.OK);
     }
 
     @Autowired
     TipoService tipoService;
 
     @PostMapping("/add-tipo")
-    public ResponseEntity<Object> salvarTipo (@RequestBody Tipo tipo) {
-        Tipo novo;
-        novo=tipoService.save(tipo);
+    public ResponseEntity<Object> salvarTipo(@RequestBody Tipo tipo) {
+        Tipo novo = tipoService.save(tipo);
         return new ResponseEntity<>(novo, HttpStatus.OK);
     }
 
-    @GetMapping("/delete-tipo")
+    @PutMapping("/update-tipo")
+    public ResponseEntity<Object> atualizarTipo(@RequestBody Tipo tipo) {
+        Tipo atualizado = tipoService.save(tipo);
+        return new ResponseEntity<>(atualizado, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete-tipo")
     public ResponseEntity<Object> excluirTipo(@RequestParam(value="id") Long id) {
-        if(tipoService.delete(id))
-            return new ResponseEntity<>("",HttpStatus.OK);
-        else
-            return new ResponseEntity<>("",HttpStatus.BAD_REQUEST);
+        if(tipoService.delete(id)) {
+            return new ResponseEntity<>("", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("", HttpStatus.BAD_REQUEST);
+        }
     }
 
     @GetMapping("/get-tipo")
     public ResponseEntity<Object> buscarUmTipo(@RequestParam(value="id") Long id) {
-        Tipo tipo;
-        tipo=tipoService.getById(id);
-        if(tipo==null)
-            tipo=new Tipo();
-        return new ResponseEntity<>(tipo,HttpStatus.OK);
+        Tipo tipo = tipoService.getById(id);
+        return new ResponseEntity<>(tipo != null ? tipo : new Tipo(), HttpStatus.OK);
     }
 
     @GetMapping("/get-all-tipos")
     public ResponseEntity<Object> buscarTodosTipos() {
-        return new ResponseEntity<>(tipoService.getAll(),HttpStatus.OK);
+        return new ResponseEntity<>(tipoService.getAll(), HttpStatus.OK);
     }
 
     @Autowired
-    UsuarioService usuarioService;
+    OrgaoService orgaoService;
 
-    @GetMapping("/delete-usuario")
-    public ResponseEntity<Object> excluirUsuario(@RequestParam(value="id") Long id) {
-        if(usuarioService.delete(id))
-            return new ResponseEntity<>("",HttpStatus.OK);
-        else
-            return new ResponseEntity<>("",HttpStatus.BAD_REQUEST);
+    @PostMapping("/add-orgao")
+    public ResponseEntity<Object> salvarOrgao(@RequestBody Orgao orgao) {
+        Orgao novo = orgaoService.save(orgao);
+        return new ResponseEntity<>(novo, HttpStatus.OK);
     }
 
-    @GetMapping("/get-usuario")
-    public ResponseEntity<Object> buscarUmUsuario(@RequestParam(value="id") Long id) {
-        Usuario usuario;
-        usuario=usuarioService.getById(id);
-        if(usuario==null)
-            usuario=new Usuario();
-        return new ResponseEntity<>(usuario,HttpStatus.OK);
+    @PutMapping("/update-orgao")
+    public ResponseEntity<Object> atualizarOrgao(@RequestBody Orgao orgao) {
+        Orgao atualizado = orgaoService.save(orgao);
+        return new ResponseEntity<>(atualizado, HttpStatus.OK);
     }
 
-    @GetMapping("/get-all-usuarios")
-    public ResponseEntity<Object> buscarTodosUsuarios() {
-        return new ResponseEntity<>(usuarioService.getAll(),HttpStatus.OK);
+    @DeleteMapping("/delete-orgao")
+    public ResponseEntity<Object> excluirOrgao(@RequestParam(value="id") Long id) {
+        if(orgaoService.delete(id)) {
+            return new ResponseEntity<>("", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("", HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @GetMapping("/get-orgao")
+    public ResponseEntity<Object> buscarUmOrgao(@RequestParam(value="id") Long id) {
+        Orgao orgao = orgaoService.getById(id);
+        return new ResponseEntity<>(orgao != null ? orgao : new Orgao(), HttpStatus.OK);
+    }
+
+    @GetMapping("/get-all-orgaos")
+    public ResponseEntity<Object> buscarTodosOrgaos() {
+        return new ResponseEntity<>(orgaoService.getAll(), HttpStatus.OK);
     }
 }
