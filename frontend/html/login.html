@@ -1,42 +1,42 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-  <title>Formulário de Login</title>
-  <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
-  <div class="container">
-    <div class="content">
-      <div id="login">
-        <form id="login-form" method="post" action=""> 
-          <h1>Login</h1> 
-           
-          <p> 
-            <label for="email_login">Seu e-mail</label>
-            <input id="email_login" name="email_login" required="required" type="email" placeholder="Ex: exemplo@dominio.com" /> 
-            <span id="email-error" class="error-message"></span>
-          </p>
-           
-          <p> 
-            <label for="senha_login">Sua senha</label>
-            <input id="senha_login" name="senha_login" required="required" type="password" placeholder="Sua senha" />
-            <span id="senha-error" class="senha-message"></span>
-          </p>
-           
-          <div class="button-container">
-            <input type="submit" value="Logar"/> 
-          </div>
-           
-          <p class="link">
-            Ainda não tem conta?
-            <a href="cadastro.html">Cadastre-se</a>
-          </p>
-        </form>
-        <div id="message"></div>
-      </div>
+
+    <div class="container">
+        <div class="content">
+            <div id="login">
+                <form id="login-form" method="post" action="">
+                    <h1>Login</h1> 
+
+                    <p> 
+                        <label for="email_cad">Seu e-mail</label>
+                        <input id="email_cad" name="email_cad" required="required" type="email" placeholder="Ex: exemplo@dominio.com"/> 
+                    </p>
+
+                    <p> 
+                        <label for="senha_cad">Sua senha</label>
+                        <input id="senha_cad" name="senha_cad" required="required" type="password" placeholder="Ex: Mínimo 6 caracteres"/>
+                    </p>
+
+                    <p> 
+                        <input type="submit" value="Entrar"/> 
+                    </p>
+
+                    <p class="link">  
+                        Não tem conta?
+                        <a href="cadastro.html">Cadastre-se</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+
     </div>
-  </div>  
+    <script src="/js/login.js"></script>
 </body>
 </html>

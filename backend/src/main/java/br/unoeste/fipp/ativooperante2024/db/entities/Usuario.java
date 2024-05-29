@@ -11,20 +11,24 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="usu_id")
     private Long id;
-    @Column(name="usu_cpf")
-    private String cpf;
-    @Column(name="usu_email")
+
+    @Column(name="usu_cpf", nullable = false)
+    private Long cpf;
+
+    @Column(name="usu_email", nullable = false, length = 40)
     private String email;
-    @Column(name="usu_senha")
-    private int senha;
-    @Column(name="usu_nivel")
+
+    @Column(name="usu_senha", nullable = false)
+    private Long senha;
+
+    @Column(name="usu_nivel", nullable = false)
     private int nivel;
 
     public Usuario() {
-        this(0L,"","",0,0);
+        this(0L, 0L, "", 0L, 0);
     }
 
-    public Usuario(Long id, String cpf, String email, int senha, int nivel) {
+    public Usuario(Long id, Long cpf, String email, Long senha, int nivel) {
         this.id = id;
         this.cpf = cpf;
         this.email = email;
@@ -40,11 +44,11 @@ public class Usuario {
         this.id = id;
     }
 
-    public String getCpf() {
+    public Long getCpf() {
         return cpf;
     }
 
-    public void setCpf(String cpf) {
+    public void setCpf(Long cpf) {
         this.cpf = cpf;
     }
 
@@ -56,11 +60,11 @@ public class Usuario {
         this.email = email;
     }
 
-    public int getSenha() {
+    public Long getSenha() {
         return senha;
     }
 
-    public void setSenha(int senha) {
+    public void setSenha(Long senha) {
         this.senha = senha;
     }
 
@@ -72,11 +76,47 @@ public class Usuario {
         this.nivel = nivel;
     }
 
+
+=======
+    public static boolean isValidCpf(Long cpf) {
+        String cpfString = cpf.toString();
+        if (cpfString.length() != 11) {
+            return false;
+        }
+        // Implementação simplificada da validação de CPF
+        int[] multiplicadores1 = {10, 9, 8, 7, 6, 5, 4, 3, 2};
+        int[] multiplicadores2 = {11, 10, 9, 8, 7, 6, 5, 4, 3, 2};
+
+        int soma = 0;
+        for (int i = 0; i < 9; i++) {
+            soma += (cpfString.charAt(i) - '0') * multiplicadores1[i];
+        }
+
+        int resto = soma % 11;
+        char digito1 = (resto < 2) ? '0' : (char) ((11 - resto) + '0');
+
+        soma = 0;
+        for (int i = 0; i < 10; i++) {
+            soma += (cpfString.charAt(i) - '0') * multiplicadores2[i];
+        }
+
+        resto = soma % 11;
+        char digito2 = (resto < 2) ? '0' : (char) ((11 - resto) + '0');
+
+        return cpfString.charAt(9) == digito1 && cpfString.charAt(10) == digito2;
+    }
+
     public static boolean isValidEmail(String email) {
         String emailRegex = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
         Pattern pattern = Pattern.compile(emailRegex);
         return pattern.matcher(email).matches();
     }
 
-
 }
+=======
+    public static boolean isValidSenha(Long senha) {
+        String senhaString = senha.toString();
+        return !senhaString.isEmpty() && senhaString.length() <= 6;
+    }
+}
+

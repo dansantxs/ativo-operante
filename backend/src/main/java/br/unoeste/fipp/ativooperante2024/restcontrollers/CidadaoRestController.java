@@ -1,13 +1,7 @@
 package br.unoeste.fipp.ativooperante2024.restcontrollers;
 
-import br.unoeste.fipp.ativooperante2024.db.entities.Denuncia;
-import br.unoeste.fipp.ativooperante2024.db.entities.Orgao;
-import br.unoeste.fipp.ativooperante2024.db.entities.Tipo;
-import br.unoeste.fipp.ativooperante2024.db.entities.Usuario;
-import br.unoeste.fipp.ativooperante2024.services.DenunciaService;
-import br.unoeste.fipp.ativooperante2024.services.OrgaoService;
-import br.unoeste.fipp.ativooperante2024.services.TipoService;
-import br.unoeste.fipp.ativooperante2024.services.UsuarioService;
+import br.unoeste.fipp.ativooperante2024.db.entities.*;
+import br.unoeste.fipp.ativooperante2024.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -46,6 +40,7 @@ public class CidadaoRestController {
         return null;
     }
 
+
     @GetMapping("/get-denuncia")
     public ResponseEntity<Object> buscarUmaDenuncia(@RequestParam(value="id") Long id) {
         Denuncia denuncia;
@@ -65,21 +60,17 @@ public class CidadaoRestController {
         List<Denuncia> denuncias = denunciaService.getDenunciasDoUsuario(usuarioId);
         return new ResponseEntity<>(denuncias, HttpStatus.OK);
     }
+
     @Autowired
-    OrgaoService orgaoService;
+    FeedbackService feedbackService;
 
-    @GetMapping("/get-orgao")
-    public ResponseEntity<Object> buscarUmOrgao(@RequestParam(value="id") Long id) {
-        Orgao orgao;
-        orgao=orgaoService.getById(id);
-        if(orgao==null)
-            orgao=new Orgao();
-        return new ResponseEntity<>(orgao,HttpStatus.OK);
-    }
-
-    @GetMapping("/get-all-orgaos")
-    public ResponseEntity<Object> buscarTodosOrgaos() {
-        return new ResponseEntity<>(orgaoService.getAll(),HttpStatus.OK);
+    @GetMapping("/get-feedback")
+    public ResponseEntity<Object> buscarUmFeedback(@RequestParam(value="id") Long id) {
+        Feedback feedback;
+        feedback=feedbackService.getById(id);
+        if(feedback==null)
+            feedback=new Feedback();
+        return new ResponseEntity<>(feedback,HttpStatus.OK);
     }
 
     @Autowired
@@ -99,5 +90,22 @@ public class CidadaoRestController {
         return new ResponseEntity<>(tipoService.getAll(),HttpStatus.OK);
     }
 
+
+    @Autowired
+    OrgaoService orgaoService;
+
+    @GetMapping("/get-orgao")
+    public ResponseEntity<Object> buscarUmOrgao(@RequestParam(value="id") Long id) {
+        Orgao orgao;
+        orgao=orgaoService.getById(id);
+        if(orgao==null)
+            orgao=new Orgao();
+        return new ResponseEntity<>(orgao,HttpStatus.OK);
+    }
+
+    @GetMapping("/get-all-orgaos")
+    public ResponseEntity<Object> buscarTodosOrgaos() {
+        return new ResponseEntity<>(orgaoService.getAll(),HttpStatus.OK);
+    }
 
 }

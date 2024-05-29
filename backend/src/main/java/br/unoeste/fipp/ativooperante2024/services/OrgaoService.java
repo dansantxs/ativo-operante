@@ -19,16 +19,14 @@ public class OrgaoService {
     public boolean delete(Long id) {
         try {
             repo.deleteById(id);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             return false;
         }
         return true;
     }
 
     public Orgao getById(Long id) {
-        Orgao orgao=repo.findById(id).get();
-        return orgao;
+        return repo.findById(id).orElse(null);
     }
 
     public List<Orgao> getAll() {

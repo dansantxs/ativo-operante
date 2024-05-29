@@ -30,8 +30,11 @@ public class UsuarioService {
     }
 
     public Usuario getById(Long id) {
-        Usuario usuario=repo.findById(id).get();
-        return usuario;
+        return repo.findById(id).get();
+    }
+
+    public Usuario getByEmail(String email) {
+        return repo.findByEmail(email);
     }
 
     public List<Usuario> getAll() {
