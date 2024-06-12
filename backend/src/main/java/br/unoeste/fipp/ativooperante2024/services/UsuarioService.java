@@ -16,7 +16,9 @@ public class UsuarioService {
         if (repo.existsByEmail(usuario.getEmail())) {
             throw new IllegalArgumentException("Login já existente");
         }
+
         return repo.save(usuario);
+
     }
 
     public boolean delete(Long id) {
@@ -41,9 +43,7 @@ public class UsuarioService {
         return repo.findAll();
     }
 
-    public Usuario getByEmail(String email) {
-        return repo.findByEmail(email);
-    }
+
 
 
 

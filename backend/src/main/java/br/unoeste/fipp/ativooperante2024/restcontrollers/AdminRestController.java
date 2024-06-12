@@ -109,6 +109,9 @@ public class AdminRestController {
     OrgaoService orgaoService;
 
 
+
+    @Autowired
+    UsuarioService usuarioService;
     @PostMapping("/add-usuario")
     public ResponseEntity<Object> salvarUsuario (@RequestBody Usuario usuario) {
         if (!usuario.isValidEmail(usuario.getEmail())) {
@@ -119,6 +122,7 @@ public class AdminRestController {
         } catch (IllegalArgumentException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
+    }
 
     @PostMapping("/add-orgao")
     public ResponseEntity<Object> salvarOrgao(@RequestBody Orgao orgao) {

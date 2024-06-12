@@ -1,5 +1,5 @@
 package br.unoeste.fipp.ativooperante2024.security;
-/*
+
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -14,17 +14,17 @@ import io.jsonwebtoken.security.Keys;
 public class JWTTokenProvider {
     private static final SecretKey CHAVE = Keys.hmacShaKeyFor("MINHACHAVESECRETA_MINHACHAVESECRETA".getBytes(StandardCharsets.UTF_8));
 
-    static public String getToken(String usuario,int nivel) {
+    static public String getToken(String usuario, int nivel) {
         String jwtToken = Jwts.builder()
-                              .setSubject(usuario)
-                              .setIssuer("localhost:8080")
-                              .claim("nivel", nivel)
-                              .setIssuedAt(new Date())
-                              .setExpiration(Date.from(LocalDateTime.now().plusMinutes(1L)
-                              .atZone(ZoneId.systemDefault()).toInstant()))
-                              .signWith(CHAVE)
-                              .compact();
-        return jwtToken;        
+                .setSubject(usuario)
+                .setIssuer("localhost:8080")
+                .claim("nivel", nivel)
+                .setIssuedAt(new Date())
+                .setExpiration(Date.from(LocalDateTime.now().plusMinutes(15L)
+                        .atZone(ZoneId.systemDefault()).toInstant()))
+                .signWith(CHAVE)
+                .compact();
+        return jwtToken;
     }
 
     static public boolean verifyToken(String token) {
@@ -55,4 +55,3 @@ public class JWTTokenProvider {
     }
 }
 
- */
