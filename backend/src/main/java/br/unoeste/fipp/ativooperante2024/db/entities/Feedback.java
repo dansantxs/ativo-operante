@@ -13,17 +13,18 @@ public class Feedback {
     @Column(name="fee_texto")
     private String texto;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="den_id", referencedColumnName = "den_id")
+    @ManyToOne
+    @JoinColumn(name="den_id", nullable = false)
     private Denuncia denuncia;
 
     public Feedback() {
-        this(0L, "");
+        this(0L, "", null);
     }
 
-    public Feedback(Long id, String texto) {
+    public Feedback(Long id, String texto, Denuncia denuncia) {
         this.id = id;
         this.texto = texto;
+        this.denuncia = denuncia;
     }
 
     public Long getId() {

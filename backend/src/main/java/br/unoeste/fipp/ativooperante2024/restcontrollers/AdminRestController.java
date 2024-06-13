@@ -51,7 +51,20 @@ public class AdminRestController {
         return new ResponseEntity<>(novo, HttpStatus.OK);
     }
 
-    @GetMapping("/delete-feedback")
+    @PutMapping("/update-feedback")
+    public ResponseEntity<Object> atualizarFeedback(@RequestBody Feedback feedback) {
+        if (feedback.getDenuncia() != null && feedback.getDenuncia().getId() != null) {
+            Denuncia denuncia = denunciaService.getById(feedback.getDenuncia().getId());
+            if (denuncia == null) {
+                return new ResponseEntity<>("Denuncia não encontrada", HttpStatus.BAD_REQUEST);
+            }
+            feedback.setDenuncia(denuncia);
+        }
+        Feedback atualizado = feedbackService.save(feedback);
+        return new ResponseEntity<>(atualizado, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete-feedback")
     public ResponseEntity<Object> excluirFeedback(@RequestParam(value="id") Long id) {
         if(feedbackService.delete(id))
             return new ResponseEntity<>("",HttpStatus.OK);

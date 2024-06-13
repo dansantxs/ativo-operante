@@ -3,6 +3,8 @@ package br.unoeste.fipp.ativooperante2024.db.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
+
 @Entity
 @Table(name="denuncia")
 public class Denuncia {
@@ -27,8 +29,6 @@ public class Denuncia {
     @ManyToOne
     @JoinColumn(name="usu_id",nullable = false)
     private Usuario usuario;
-    @OneToOne(mappedBy = "denuncia")
-    private Feedback feedback;
 
     public Denuncia() {
         this(0L,"","",0,null,null,null,null);
